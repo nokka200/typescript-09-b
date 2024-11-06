@@ -8,6 +8,11 @@ interface ExerciseValues {
     average: number;
 }
 
+interface Userinput {
+    dailyExercises: Array<number>;
+    target: number;
+}
+
 const calculateExercises = (dailyExercises: number[], target: number): ExerciseValues => {
     const periodLength = dailyExercises.length;
     const trainingDays = dailyExercises.filter(day => day > 0).length;
@@ -41,6 +46,15 @@ const calculateExercises = (dailyExercises: number[], target: number): ExerciseV
         average
     };
 }
+
+const parseArgumentsCalculator = (args: string[]): Userinput => { 
+    if (args.length < 10) throw new Error('Not enough arguments');
+    if (args.length > 10) throw new Error('Too many arguments');
+
+    const numbers = args.slice(1).map(str => parseFloat(str));
+
+    return null;
+  }
 
 const value = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
 console.log(value);
