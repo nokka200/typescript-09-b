@@ -47,14 +47,18 @@ const calculateExercises = (dailyExercises: number[], target: number): ExerciseV
     };
 }
 
-const parseArgumentsCalculator = (args: string[]): Userinput => { 
-    if (args.length < 10) throw new Error('Not enough arguments');
-    if (args.length > 10) throw new Error('Too many arguments');
+const parseArgumentsCalculator = (args: string[]): Userinput => {
+    const temp: number[] = args.slice(2).map(str => parseFloat(str));
+    const target = temp[0];
+    const dailyExercises: number[] = temp.slice(1)
 
-    const numbers = args.slice(1).map(str => parseFloat(str));
-
-    return null;
+    return {
+        dailyExercises,
+        target
+    };
   }
 
-const value = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
+const { dailyExercises, target } = parseArgumentsCalculator(process.argv);
+//const value = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
+const value = calculateExercises(dailyExercises, target);
 console.log(value);
