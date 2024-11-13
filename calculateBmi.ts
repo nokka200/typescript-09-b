@@ -1,3 +1,4 @@
+
 interface BmiValues {
   height: number;
   weight: number;
@@ -29,5 +30,10 @@ const parseArguments = (args: Array<string>): BmiValues => {
   }
 }
 
-const { height, weight } = parseArguments(process.argv);
-console.log(calculateBmi(height, weight)); 
+if (require.main === module) {
+  const { height, weight } = parseArguments(process.argv);
+  console.log(calculateBmi(height, weight)); 
+}
+
+
+export { calculateBmi };
