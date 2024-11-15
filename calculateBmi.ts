@@ -15,9 +15,9 @@ const calculateBmi = (height: number, weight: number): string => {
   } else {
     return "Obese range";
   }
-}
+};
 
-const parseArguments = (args: Array<string>): BmiValues => { 
+const parseArguments = (args: Array<string>): BmiValues => {
   if (args.length < 4) throw new Error('Not enough arguments');
   if (args.length > 4) throw new Error('Too many arguments');
   if (!isNaN(Number(args[2])) && !isNaN(Number(args[3]))) {
@@ -28,7 +28,7 @@ const parseArguments = (args: Array<string>): BmiValues => {
   } else {
     throw new Error('Provided values were not numbers!');
   }
-}
+};
 
 if (require.main === module) {
   const { height, weight } = parseArguments(process.argv);

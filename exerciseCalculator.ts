@@ -45,18 +45,18 @@ const calculateExercises = (dailyExercises: number[], target: number): ExerciseV
         target,
         average
     };
-}
+};
 
 const parseArgumentsCalculator = (args: string[]): Userinput => {
     const temp: number[] = args.slice(2).map(str => parseFloat(str));
     const target = temp[0];
-    const dailyExercises: number[] = temp.slice(1)
+    const dailyExercises: number[] = temp.slice(1);
 
     return {
         dailyExercises,
         target
     };
-  }
+};
 
 const { dailyExercises, target } = parseArgumentsCalculator(process.argv);
 //const value = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
