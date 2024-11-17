@@ -58,7 +58,11 @@ const parseArgumentsCalculator = (args: string[]): Userinput => {
     };
 };
 
-const { dailyExercises, target } = parseArgumentsCalculator(process.argv);
-//const value = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
-const value = calculateExercises(dailyExercises, target);
-console.log(value);
+if (require.main === module) {
+    const { dailyExercises, target } = parseArgumentsCalculator(process.argv);
+    //const value = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
+    const value = calculateExercises(dailyExercises, target);
+    console.log(value);
+}
+
+export { ExerciseValues, Userinput, calculateExercises };
