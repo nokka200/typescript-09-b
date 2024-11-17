@@ -23,11 +23,14 @@ app.get('/bmi/', (req, res) => {
 });
 
 app.post('/exercises', (req, res) => {
+  if (!req.body.daily_exercises || !req.body.target) {
+    res.json({ error: 'parameters missing' });
+  }
   try {
     const dailyExercises: number[] = req.body.daily_exercises as Array<number>;
     const target: number = Number(req.body.target as string);
-    if (!dailyExercises || !target) {
-      res.json({ error: 'parameters missing' });
+    if (!Array.isArray(dailyExercises) || isNaN(target)) {
+      res.json({ error: 'malformatted parameters' });
     }
     const value = calculateExercises(dailyExercises, target);
     res.json(value);
